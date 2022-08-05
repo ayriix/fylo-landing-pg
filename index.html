@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+  <title>Fylo</title>
+  <style>
+    :root {
+      --primary-color-darkblue: hsl(243, 87%, 12%);
+      --primary-color-blue: hsl(238, 22%, 44%);
+      --accent-color-blue: hsl(224, 93%, 58%);
+      --accent-color-cyan: hsl(170, 45%, 43%);
+      --neutral-color-grayishblue: hsl(240, 75%, 98%);
+      --neutral-color-gray: hsl(0, 0%, 75%);
+    }
+    body {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+    }
+    header, main, section * {
+      font-family: 'Open Sans', sans-serif;
+    }
+    h1, h2, h3, h4 {
+      font-family: 'Raleway', sans-serif;
+      padding: 0;
+      margin: 0;
+    }
+    p {
+      margin: 0;
+      padding: 0;
+    }
+    a {
+      text-decoration: none;
+      color: #000;
+    }
+    .main__header__wrapper {
+      display: flex;
+      justify-content: space-between;
+      margin: 64px;
+    }
+    nav ul {
+      display: flex;
+      list-style-type: none;
+      gap: 50px;
+    }
+    .main__content {
+      margin: 64px 0 0 0;
+    }
+    section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+      align-items: center;
+      padding: 0 64px 100px 64px;
+    }
+    .section__content {
+      max-width: 540px;
+      display: flex;
+      flex-direction: column;
+      row-gap: 20px;
+    }
+    .section__content__header {
+      line-height: 45px;
+      font-size: 22px;
+      color: var(--primary-color-darkblue);
+    }
+    .section__content__description {
+      max-width: 500px;
+      display: flex;
+      flex-direction: column;
+      row-gap: 20px;
+      color: var(--primary-color-darkblue);
+    }
+    .section__content__feedback input {
+      padding: 12px;
+      width: 45%;
+      outline: none;
+      margin-right: 10px;
+      border-radius: 3px;
+    }
+    .section__content__feedback input:invalid {
+      border-color: rgb(210, 110, 110);
+    }
+    .section__content__feedback .btn {
+      padding: 12px 48px;
+      text-align: center;
+      color: #fff;
+      border: 1px solid var(--accent-color-blue);
+      cursor: pointer;
+      font-weight: 700;
+      border-radius: 3px;
+      background-color: var(--accent-color-blue);
+    }
+    .section__content__feedback .btn:active {
+      filter: brightness(1.1);
+    }
+    input::placeholder {
+      color: var(--neutral-color-gray);
+    }
+    .section__image img {
+      width: 100%;
+    }
+    .link {
+      color: var(--accent-color-cyan);
+      border-bottom: 1px solid var(--accent-color-cyan);
+      padding: 2px;
+    }
+    .link::after {
+      content: url(images/icon-arrow.svg);
+      vertical-align: sub;
+      margin-left: 4px;
+    }
+    .section__two {
+      background: url(images/bg-curve-desktop.svg) no-repeat;
+      background-position: center center;
+      background-size: cover;
+      align-items: flex-start;
+      margin: 0;
+      padding: 100px 64px 64px 64px;
+    }
+    .section__content__link {
+      margin-bottom: 25px;
+    }
+    .section__content__link:hover {
+      filter: brightness(1.1);
+    }
+    .section__third {
+      padding: 64px 48px;
+      column-gap: 50px;
+      background-color: var(--primary-color-blue);
+    }
+    .header__access, .description__access {
+      max-width: 460px;
+      color: #fff;
+    }
+    .section__third__feedback {
+      display: flex;
+      flex-direction: column;
+      row-gap: 15px;
+    }
+    .section__third__feedback input {
+      max-width: 600px;
+      padding: 12px 24px;
+      outline: none;
+      margin-right: 10px;
+      border-radius: 3px;
+      border: 0;
+      box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.4);
+    }
+    .section__third__feedback input:invalid {
+      border: 1px solid rgb(210, 110, 110);
+    }
+    .section__third__feedback .btn {
+      max-width: 200px;
+      padding: 12px 24px;
+      text-align: center;
+      color: #fff;
+      font-weight: 700;
+      border-radius: 3px;
+      background-color: var(--accent-color-blue);
+      box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.4);
+    }
+    .section__third__feedback .btn:active {
+      filter: brightness(1.1);
+    }
+    .content__post {
+      display: flex;
+      flex-direction: column;
+      row-gap: 15px;
+      max-width: 320px;
+      box-shadow: 0 0 15px 0 rgb(0, 0, 0, 0.2);
+      border-radius: 5px;
+      padding: 26px;
+    }
+    .post__author {
+      display: flex;
+      align-items: center;
+      gap: 10px
+    }
+    .post__author__text {
+      display: flex;
+      flex-direction: column;
+    }
+    .post__author img {
+      width: 40px;
+      border-radius: 25px;
+    }
+    .main__footer {
+      background-color: var(--primary-color-darkblue);
+      padding: 64px 48px;
+    }
+    .footer__image {
+      margin-bottom: 10px;
+    }
+    .footer__nav__menu a {
+      color: #fff;
+    }
+    .footer__nav__menu {
+      display: flex;
+      justify-content: space-between;
+      max-width: 1080px;
+    }
+    .footer__nav__menu a:hover {
+      color: var(--primary-color-blue);
+    }
+    .footer__nav__menu__left, .footer__nav__menu__center, .footer__nav__menu__right {
+      display: flex;
+      flex-direction: column;
+      row-gap: 15px;
+    }
+    .footer__nav__menu__social {
+      filter: invert(1);
+      display: flex;
+      gap: 10px;
+      height: max-content;
+    }
+    .footer__nav__menu__social i:hover {
+      filter: invert(1);
+      color: var(--primary-color-blue);
+    }
+    .footer__phone::before {
+      content: url(images/icon-phone.svg);
+      margin-right: 15px;
+    }
+    .footer__email::before {
+      content: url(images/icon-email.svg);
+      margin-right: 13px;
+    }
+    @media (max-width: 375px) {
+      .main__header__wrapper {
+        margin: 32px;
+        gap: 90px;
+      }
+      section {
+        padding: 0 20px 100px 20px;
+        text-align: center;
+      }
+      .section__first { gap: 30px; }
+      .section__two {
+      background-color: #f9f8fe;
+      margin: 0;
+      padding: 50px 20px 64px 20px;
+      gap: 30px;
+    }
+    .section__third .section__content {
+      max-width: 450px;
+      align-items: center;
+    }
+    .section__third .section__content__description {
+      max-width: 360px;
+      font-size: 18px;
+    }
+    .section__content__header { font-size: 20px; }
+    .section__third__feedback input {
+      width: 60%;
+      margin: 20px 50px 10px 50px;
+    }
+    .section__third__feedback { row-gap: 0; }
+    .section__third__feedback .btn {
+      padding: 12px 74px;
+      margin: 0 50px;
+    }
+    .content__post {
+      align-self: center;
+      text-align: left;
+    }
+    body { width: 551px; }
+    nav ul { gap: 20px; }
+    .footer__nav__menu {
+      flex-direction: column;
+      row-gap: 50px;
+    }
+    .footer__nav__menu__social { align-self: center; }
+    .footer__image {
+      margin-bottom: 40px;
+    }
+  }
+    /* .section__content:last-child {
+      max-width: 540px;
+      display: flex;
+      flex-direction: column;
+      row-gap: 20px;
+    } */
+  </style>
+</head>
+<body>
+  <header class="main__header">
+    <div class="main__header__wrapper">
+      <div class="logo">
+        <img src="images/logo.svg" alt="">
+      </div>
+      <nav class="menu">
+        <ul>
+          <li><a href="#">Features</a></li>
+          <li><a href="#">Team</a></li>
+          <li><a href="#">Sign&nbsp;in</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main class="main__content">
+    <section class="section__first">
+      <div class="section__content">
+        <div class="section__content__header">
+          <h1>All your files in one secure location, accessible anywhere.</h1>
+        </div>
+        <div class="section__content__description">
+          <p>Fylo stores your most important files in one secure location. 
+            Access them wherever you need, share and collaborate with friends, 
+            family, and co-workers.</p>
+        </div>
+        <div class="section__content__feedback">
+          <input type="email" placeholder="Enter your email...">
+          <button type="submit" class="btn">Get Started</button>
+        </div>
+      </div>
+      <div class="section__image">
+        <img src="images/illustration-1.svg" alt="">
+      </div>
+    </section>
+    <section class="section__two">
+      <div class="section__content">
+        <div class="section__content__header">
+          <h1>Stay productive, wherever you are</h1>
+        </div>
+        <div class="section__content__description">
+          <p>Never let location be an issue when accessing your files. Fylo has you covered for all of your file storage needs.</p>
+          <p>Securely share files and folders with friends, family and colleagues for live collaboration. No email attachments required!</p>
+        </div>
+        <div class="section__content__link">
+          <a href="#" class="link">See how Fylo works</a>
+        </div>
+        <article class="content__post">
+          <div class="post__image">
+            <img src="images/icon-quotes.svg" alt="" style="width: 15px;">
+          </div>
+          <div class="post__text">
+            <p>Fylo has improved our team productivity by an order of magnitude. Since making the switch our team has become a well-oiled collaboration machine.</p>
+          </div>
+          <div class="post__author">
+            <img src="images/avatar-testimonial.jpg" alt="">
+            <div class="post__author__text">
+              <p style="font-weight: 700;">Kyle Burton</p>
+              <p style="font-size: 12px;">Founder & CEO, Huddle</p>
+            </div>
+          </div>
+        </article>
+      </div>
+      <div class="section__image">
+        <img src="images/illustration-2.svg" alt="">
+      </div>
+    </section>
+    <section class="section__third">
+      <div class="section__content">
+        <div class="section__content__header">
+          <h1 class="header__access">Get early access today</h1>
+        </div>
+        <div class="section__content__description">
+          <p class="description__access">It only takes a minute to sign up and our free starter tier is extremely generous. If you have any questions, our support team would be happy to help you.</p>
+        </div>
+      </div>
+      <div class="section__third__feedback">
+        <input type="email" placeholder="email@example.com">
+        <a href="#" class="btn">Get Started For Free</a>
+      </div>
+    </section>
+  </main>
+  <footer class="main__footer">
+    <div class="footer__image">
+      <img src="images/logo2.svg" alt="">
+    </div>
+    <div class="footer__nav__menu">
+      <div class="footer__nav__menu__left">
+        <a href="#" class="footer__phone">Phone: +1-543-123-4567</a>
+        <a href="#" class="footer__email">example@fylo.com</a>
+      </div>
+      <div class="footer__nav__menu__center">
+        <a href="#">About us</a>
+        <a href="#">Jobs</a>
+        <a href="#">Press</a>
+        <a href="#">Blog</a>
+      </div>
+      <div class="footer__nav__menu__right">
+        <a href="#">Contact us</a>
+        <a href="#">Terms</a>
+        <a href="#">Privacy</a>
+      </div>
+      <div class="footer__nav__menu__social">
+        <i class="fab fa-facebook fa-2x"></i>
+        <i class="fab fa-twitter fa-2x"></i>
+        <i class="fab fa-instagram fa-2x"></i>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
